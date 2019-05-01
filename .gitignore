@@ -2,7 +2,7 @@
 /_build
 /cover
 /deps
-# /doc
+/doc
 /.fetch
 erl_crash.dump
 *.ez
