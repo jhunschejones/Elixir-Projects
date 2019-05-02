@@ -15,3 +15,4 @@ I will add more code as I complete further projects, but please feel free to rea
 
 ### Projects:
 * [Cards project](https://github.com/jhunschejones/Elixir-Projects/tree/master/cards) - An Elixir module that simulates working with a deck of playing cards, including tests and `ex_doc` generated documentation.
+* [Identicon](https://github.com/jhunschejones/Elixir-Projects/tree/master/identicon) - An Elixir module that takes a user input string and generates a unique image that matches the exact input string _(different input values result in different images, inputing the exact same value will generate the same image)_.
