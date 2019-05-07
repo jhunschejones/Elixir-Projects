@@ -19,3 +19,18 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+document.addEventListener('DOMContentLoaded', function(){ 
+  const info_flashes = document.querySelectorAll('.alert-info');
+  if (info_flashes.length > 0) {
+    for (let index = 0; index < info_flashes.length; index++) {
+      const s = info_flashes[index].style;
+      setTimeout(function(){ 
+        s.opacity = 1;
+        (function fade(){
+          (s.opacity -= 0.05) < 0 ? s.display = "none" : setTimeout(fade, 20);
+        })();
+      }, 3000);
+    }
+  }
+});
