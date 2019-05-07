@@ -1,1 +1,13 @@
-/* This file is for your main application css. */
+/* phoenix error_tag element */
+.help-block {
+  color: #f48fb1;
+  text-transform: capitalize;
+}
+
+.form-group #topic_title {
+  margin-bottom: 0px;
+}
+
+#submit_topic_button {
+  margin-top: 10px;
+}
