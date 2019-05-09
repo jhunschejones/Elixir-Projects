@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
         (function fade(){
           (s.opacity -= 0.05) < 0 ? s.display = "none" : setTimeout(fade, 20);
         })();
-      }, 3000);
+      }, 2000);
     }
   }
 });

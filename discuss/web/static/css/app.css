@@ -4,11 +4,13 @@
 .alert-info {
   background-color: #e3f2fd;
   color: #1565c0;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 12px 25px;
+  border-radius: 8px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  font-weight: normal;
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+  position: absolute;
+  left: 43%;
+  transform: translate(0%, -43%); 
 }
 
 /* phoenix error_tag element */
