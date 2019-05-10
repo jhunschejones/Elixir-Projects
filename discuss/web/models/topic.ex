@@ -11,7 +11,7 @@ defmodule Discuss.Topic do
   # a `valid?: boolean` response and any errors from failed validation steps
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title]) # produces an Ecto.Changeset
+    |> cast(params, [:title]) # produces an Ecto.Changeset with this param
     |> validate_required([:title]) # checks if Ecto.Changeset is valid
   end
 end
