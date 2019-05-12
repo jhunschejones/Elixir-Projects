@@ -21,7 +21,8 @@
           <%= if @conn.assigns[:user] do %>
             <li><%= link "Sign Out", to: auth_path(@conn, :signout) %></li>
           <% else %>
-            <li><%= link "Sign In With Github", to: auth_path(@conn, :request, "github") %></li>
+            <li><%= link "Sign In", to: auth_path(@conn, :request, "github"), id: "short-sign-in-button" %></li>
+            <li><%= link "Sign In With Github", to: auth_path(@conn, :request, "github"), id: "long-sign-in-button" %></li>
           <% end %>
         </ul>
       </div>
@@ -29,8 +30,10 @@
 
     <div class="container">
 
-      <div class="center"><p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p></div>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="center">
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      </div>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>

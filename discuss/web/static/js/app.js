@@ -21,7 +21,7 @@ import "phoenix_html"
 // import socket from "./socket"
 
 document.addEventListener('DOMContentLoaded', function(){ 
-  const info_flashes = document.querySelectorAll('.alert-info');
+  const info_flashes = document.querySelectorAll('.alert');
   if (info_flashes.length > 0) {
     for (let index = 0; index < info_flashes.length; index++) {
       const s = info_flashes[index].style;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
         (function fade(){
           (s.opacity -= 0.05) < 0 ? s.display = "none" : setTimeout(fade, 20);
         })();
-      }, 2000);
+      }, 2300);
     }
   }
 });

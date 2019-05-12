@@ -3,6 +3,7 @@ defmodule Discuss.Topic do
 
   schema "topics" do
     field :title, :string
+    belongs_to :user, Discuss.User
   end
 
   # struct argument is a record to be entered into the database
