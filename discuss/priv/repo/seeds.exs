@@ -12,9 +12,10 @@
 
 alias Discuss.User
 alias Discuss.Topic
+alias Discuss.Comment
 alias Discuss.Repo
 
-Repo.insert! %User{
+seed_user = Repo.insert! %User{
   email: "joshua@hunschejones.com",
   provider: "github",
   token: ""
@@ -27,15 +28,39 @@ Repo.insert! %Topic{
 
 Repo.insert! %Topic{
   title: "Node.js: Fun With Server-Side JavaScript",
-  user_id: 1
+  user_id: seed_user.id
 }
 
-Repo.insert! %Topic{
+seed_topic_3 = Repo.insert! %Topic{
   title: "Complex Associations in ActiveRecord",
-  user_id: 1
+  user_id: seed_user.id
 }
 
-Repo.insert! %Topic{
+seed_topic_4 = Repo.insert! %Topic{
   title: "Phoenix and User Authentication",
-  user_id: 1
+  user_id: seed_user.id
+}
+
+Repo.insert! %Comment{
+  content: "I find Phoenix's plug patter especially helpful for user authentication.",
+  user_id: seed_user.id,
+  topic_id: seed_topic_4.id
+}
+
+Repo.insert! %Comment{
+  content: "Self-refrencing, non-directed many-to-many relationships are difficult in ActiveRecord",
+  user_id: seed_user.id,
+  topic_id: seed_topic_3.id
+}
+
+Repo.insert! %Comment{
+  content: "I agree! So far I have just been using raw SQL when I get to that point.",
+  user_id: seed_user.id,
+  topic_id: seed_topic_3.id
+}
+
+Repo.insert! %Comment{
+  content: "That's probably what I'll have to do. Any tips for the best way to apply that idea without breaking too many of Rails' conventions?",
+  user_id: seed_user.id,
+  topic_id: seed_topic_3.id
 }

@@ -58,6 +58,16 @@
   margin-bottom: 0px;
 }
 
-#submit_topic_button {
+#submit-topic-button,
+#edit-topic-button {
   margin-top: 12px;
+}
+
+/* === show topic page === */
+#submit-comment-button {
+  margin-top: 5px;
+}
+
+#topic-title {
+  margin-top: 30px;
 }
