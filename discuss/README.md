@@ -1,20 +1,13 @@
 # Discuss
 
-To start your Phoenix app:
+## Overview
+I completed this project in 2019 as part of a tutorial I worked through while learning the Elixir language and Phoenix web application framework. It was a great opportunity to get exposure to another way the Elixir language can be put to use while learning some other interesting tools along the way. The final product is a web application that allows users to log in, create topics, and comment on topics by other users.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+## New Tools Used
+I've rolled basic user/account services in Rails before, and I've made use of Firebase's authentication API in the past, but this project was my first exposure to OAuth in the context of a full web application. I used GitHub as the OAuth provider and found this approach proved to be a powerful balance between the previous two ways I had solved this issue in the past. I could store only the user information I need (like rolling my own user system) without having to juggle password hashing or reset emails. Phoenix was still able to provide plenty of functionality for handling user tokens in the front end of an application, which was often just as easy to use as the solutions Firebase provides.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+This project used a Postgres database which allowed me the opportunity to use some new Postgres-centered tools along the way. I've worked with MSSQL and MySQL before, so I was able to compare and contrast between the different development workflows along the way. While I would still say the tooling for MySQL feels more intuitive for me personally, I am much more comfortable working an Postgres now and would not hesitate to jump in on a project that uses it in the future.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+To take advantage of the massive number of connections an Elixir program can handle, this project implemented Phoenix-flavored WebSockets for delivering and updating comments within user topics. I've used basic web sockets in the context of the Node/Express ecosystem before, but I was impressed with the organized way that Phoenix allows developers to put this technology to use. Working with WebSockets in Phoenix felt more like writing controllers and routes to me than I've experienced before, and I could much more easily see myself turning to this within Phoenix than I might have in other environments where the implementations are just not as straightforward.
 
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Finally, I very much enjoyed working with the Materialize front-end framework in this project. I've been a committed Bootstrap user for some time now, even contributing to an open-source Bootstrap vanilla JS library that allows developers to use the framework without jQuery. When I first started laying out a page with Materialize though, I was immediately impressed. Not only does it allow for easy inclusion of common UI elements *(like Bootstrap does)* but it also follows Google's user-focused material design style while providing customizable parameters to fit more modern UI demands. I look forward to working with this framework in future projects and exploring further how I might work with the source code to compile smaller code bundles for subsets of features and provide smaller resource footprints. 

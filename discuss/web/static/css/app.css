@@ -71,3 +71,8 @@
 #topic-title {
   margin-top: 30px;
 }
+
+#comments {
+  max-height: 48vh;
+  overflow-y: scroll;
+}
