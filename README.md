@@ -8,6 +8,7 @@ I will add more code as I complete further projects, but please feel free to rea
 ## Repository Contents
 
 ### Language Basics:
+* [Fizzbuzz](https://github.com/jhunschejones/Elixir-Projects/tree/master/fizzbuzz) (x3!)
 * [Anonymous functions and the wildcard operator](https://github.com/jhunschejones/Elixir-Projects/blob/master/find_three.exs)
 * [Spawning and communicating between processes](https://github.com/jhunschejones/Elixir-Projects/blob/master/ping_pong.exs)
 * [Basic recursion](https://github.com/jhunschejones/Elixir-Projects/blob/master/recursion.exs)
