@@ -14,7 +14,7 @@
   <%= error_tag f, :description %>
 
   <%= label f, :ends_at, "Auction ends at" %>
-  <%= datetime_select f, :ends_at, default: {{t.year, t.month, t.day}, {t.hour, t.minute, 0}}, year: [options: t.year..(t.year + 5)] %>
+  <%= datetime_select f, :ends_at, default: {{t().year, t().month, t().day}, {t().hour, t().minute, 0}}, year: [options: t().year..(t().year + 5)] %>
   <%= error_tag f, :ends_at %>
 
   <div>
