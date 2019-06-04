@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :auction, Auction.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "jjones",
+  password: "",
   database: "auction_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

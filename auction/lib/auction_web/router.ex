@@ -17,12 +17,12 @@ defmodule AuctionWeb.Router do
   scope "/", AuctionWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", ItemController, :index
 
     resources "/items", ItemController, except: [:delete] do
       resources "/bids", BidController, only: [:create] # nested resource
     end
-    
+
     resources "/users", UserController, only: [:show, :new, :create]
     get "/login", SessionController, :new
     post "/login", SessionController, :create
@@ -30,7 +30,9 @@ defmodule AuctionWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AuctionWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", AuctionWeb.API do
+    pipe_through :api
+
+    resources "/items", ItemController, only: [:index, :show]
+  end
 end
