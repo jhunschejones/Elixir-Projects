@@ -10,7 +10,12 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Rumbl.Accounts
+alias Rumbl.{Accounts, Multimedia}
+
+# seed basic categories
+for category <- ~w(Action Drama Romance Comedy Sci-fi Animation) do
+  Multimedia.create_category(category)
+end
 
 if !Accounts.get_user_by(username: "carlfox") do
   Accounts.regiser_user(
