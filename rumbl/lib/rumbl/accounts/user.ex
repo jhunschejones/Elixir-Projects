@@ -16,6 +16,7 @@ defmodule Rumbl.Accounts.User do
     |> cast(attrs, [:name, :username]) # only accepting these two params
     |> validate_required([:name, :username])
     |> validate_length(:username, min: 3, max: 25)
+    |> unique_constraint(:username) # makes database error into a more friendly chaneset error
   end
 
   def registration_changeset(user, params) do

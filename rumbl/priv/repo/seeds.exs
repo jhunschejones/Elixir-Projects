@@ -18,7 +18,7 @@ for category <- ~w(Action Drama Romance Comedy Sci-fi Animation) do
 end
 
 if !Accounts.get_user_by(username: "carlfox") do
-  Accounts.regiser_user(
+  Accounts.register_user(
     %{credential: %{
       email: "carl@dafoxisdis.com",
       password: "super_secure"
@@ -29,7 +29,7 @@ if !Accounts.get_user_by(username: "carlfox") do
 end
 
 if !Accounts.get_user_by(username: "dustybear") do
-  Accounts.regiser_user(
+  Accounts.register_user(
     %{credential: %{
       email: "dustybear@dafoxisdis.com",
       password: "super_secure"
@@ -40,7 +40,7 @@ if !Accounts.get_user_by(username: "dustybear") do
 end
 
 if !Accounts.get_user_by(username: "fancypenguin") do
-  Accounts.regiser_user(
+  Accounts.register_user(
     %{credential: %{
       email: "penguin@dafoxisdis.com",
       password: "super_secure"
