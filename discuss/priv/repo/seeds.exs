@@ -18,7 +18,7 @@ alias Discuss.Repo
 seed_user = Repo.insert! %User{
   email: "joshua@hunschejones.com",
   provider: "github",
-  token: ""
+  token: "c7be72feb30608cf810cc9bce2d856dc839a11bb"
 }
 
 # topic with no associated user

@@ -27,11 +27,11 @@ config :logger, :console,
 import_config "#{Mix.env}.exs"
 
 # configure ueberauth github oath
-config :ueberauth, Ueberauth, 
+config :ueberauth, Ueberauth,
   providers: [
     github: { Ueberauth.Strategy.Github, [] }
   ]
 
-# config :ueberauth, Ueberauth.Strategy.Github.Oauth,
-#   client_id: System.get_env("GITHUB_CLIENT_ID"),
-#   client_secret: System.get_env("GITHUB_CLIENT_SECRET")
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: System.get_env("CLIENT_ID"),
+  client_secret: System.get_env("CLIENT_SECRET")
