@@ -1,58 +1,55 @@
 defmodule WordFrequency do
-  def run do
-    case {System.argv(), IO.stream(:stdio, :line)} do
-      {[], input} -> stream_pipeline(input)
-      {input, _} -> file_pipeline(input)
-    end
-  end
-
-  def stream_pipeline(input) do
-    input
-    |> input_to_line_list()
-    |> lines_to_phrase_map()
-    |> top_phrases()
-    |> output_results()
-  end
+  alias WordFrequency.CLI
 
   def file_pipeline([_ | additional_files] = input) do
     case additional_files do
       [] ->
-        file_synchronous_pipeline(input)
+        input
+        |> Stream.flat_map(&(File.stream!(&1)))
+        |> synchronous_pipeline()
       _ ->
-        file_async_pipeline(input)
+        asynchronous_pipeline(input)
     end
   end
 
-  def file_synchronous_pipeline(input) do
+  def synchronous_pipeline(input) do
     input
-    |> Stream.flat_map(&(File.stream!(&1)))
     |> input_to_line_list()
     |> lines_to_phrase_map()
     |> top_phrases()
-    |> output_results()
+    |> CLI.output_results()
   end
 
-  def file_async_pipeline(input) do
+  def asynchronous_pipeline(input) do
     input
-    |> Enum.map(fn file ->
-      Task.async(fn ->
-        file
-        |> File.stream!()
-        |> input_to_line_list()
-        |> lines_to_phrase_map()
-      end)
-    end)
-    |> Enum.map(fn task -> Task.await(task) end)
-    # |> Task.async_stream(fn file ->
+    # === 0.5x memory / 1.6x time ===
+    # |> Enum.map(fn file ->
+    #   file
+    #   |> File.stream!()
+    #   |> input_to_line_list()
+    #   |> lines_to_phrase_map()
+    # end)
+    # === 0.7x memory / 1.4x time ===
+    # |> Stream.map(fn file ->
+    #   Task.async(fn ->
     #     file
     #     |> File.stream!()
     #     |> input_to_line_list()
     #     |> lines_to_phrase_map()
     #   end)
-    # |> Enum.map(fn {:ok, result} -> result end)
+    # end)
+    # |> Enum.map(fn task -> Task.await(task) end)
+    # === 1x memory / 1x time ===
+    |> Task.async_stream(fn file ->
+        file
+        |> File.stream!()
+        |> input_to_line_list()
+        |> lines_to_phrase_map()
+      end)
+    |> Enum.map(fn {:ok, result} -> result end)
     |> merge_phrase_maps()
     |> top_phrases()
-    |> output_results()
+    |> CLI.output_results()
   end
 
   def input_to_line_list(stream) do
@@ -96,15 +93,4 @@ defmodule WordFrequency do
     |> Enum.reverse()
     |> Enum.take(top_count)
   end
-
-  def output_results(result_list) do
-    result_list
-    |> Enum.each(fn result ->
-      phrase = Enum.join(elem(result, 0), " ")
-      count = elem(result, 1)
-      IO.puts "#{phrase} - #{count}"
-    end)
-  end
 end
-
-WordFrequency.run()
