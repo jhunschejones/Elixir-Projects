@@ -54,13 +54,13 @@ defmodule WordFrequency do
 
   def input_to_line_list(stream) do
     stream
-    |> Stream.map(&(filter_line(&1)))
+    |> Stream.map(&(clean_string(&1)))
     |> Stream.filter(&(&1 != ""))
     |> Stream.flat_map(&(String.split(&1, " ")))
   end
 
-  def filter_line(line) do
-    line
+  def clean_string(input_string) do
+    input_string
     |> String.replace(~r/[^a-zA-Z0-9\s]+/, "")
     |> String.trim()
     |> String.downcase()
@@ -72,23 +72,19 @@ defmodule WordFrequency do
     |> Enum.reduce(%{}, fn phrase, acc -> Map.update(acc, phrase, 1, &(&1 + 1)) end)
   end
 
-  def merge_phrase_maps(unmerged_phrase_maps) do
-    merge_phrase_maps(unmerged_phrase_maps, %{})
-  end
+  def merge_phrase_maps(unmerged_phrase_maps), do: merge_phrase_maps(unmerged_phrase_maps, %{})
+
   def merge_phrase_maps([], merged_phrase_maps), do: merged_phrase_maps
+
   def merge_phrase_maps([next | remaining], merged_phrase_maps) do
-    remaining
-    |> merge_phrase_maps(
-        Map.merge(
-          next,
-          merged_phrase_maps,
-          fn _k, count_1, count_2 -> count_1 + count_2 end
-        )
-      )
+    merge_phrase_maps(
+      remaining,
+      Map.merge(next, merged_phrase_maps, fn _k, count_1, count_2 -> count_1 + count_2 end)
+    )
   end
 
-  def top_phrases(map, top_count \\ 100) do
-    map
+  def top_phrases(phrase_map, top_count \\ 100) do
+    phrase_map
     |> Enum.sort_by(&(elem(&1, 1)))
     |> Enum.reverse()
     |> Enum.take(top_count)
