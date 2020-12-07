@@ -1,3 +1,9 @@
+# Improvements:
+# - Reject dangling two word phrases in final output
+# - This blows up `./word_frequency ~/src/bundle-agnostic-solutions/texts/*.txt | head -n 10`
+# - Review instructions again to see if there are more things that could be added
+# - Add 'dem tests!
+
 defmodule WordFrequency do
   alias WordFrequency.CLI
 
